@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
+import example_processing_app.views as views
+from logger import *
+import logging
+
+log_config = Log()
+logging.basicConfig(filename=log_config.log_config["filename"],
+                    level=log_config.log_config["level"],
+                    format=log_config.log_config["format"],
+                    datefmt=log_config.log_config["datefmt"])
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^app_status', views.app_status, name="app_status")
 ]

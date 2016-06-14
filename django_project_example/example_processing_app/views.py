@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
+def app_status(request):
+    return JsonResponse({
+        'status_code': 200
+    }, status=200)
